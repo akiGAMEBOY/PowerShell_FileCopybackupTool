@@ -338,7 +338,8 @@ Function CopyBackupfile([System.String]$BackuptoHost, [System.String]$BackuptoId
 [System.String]$result_message = ''
 [System.Text.StringBuilder]$sbtemp=New-Object System.Text.StringBuilder
 
-# 引数の有無
+# 引数チェック
+## 引数の有無
 If ($IS_VALID_DEBUG) {
     [System.String]$mode = $MODE_DEBUG
 } else {
@@ -361,7 +362,7 @@ If ($IS_VALID_DEBUG) {
     }
 }
 
-# 引数の値
+## 引数の値
 if ($result -eq 0) {
     if (-not ($mode -in @($c_mode_rotation, $c_mode_copy))) {
         $result = -102
