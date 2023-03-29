@@ -68,9 +68,6 @@ Function ConfirmYesno_winform([System.String]$prompt_message) {
     [System.Boolean]$return = $false
 
     # フォームの作成
-    # https://www.vwnet.jp/windows/PowerShell/2017122001/ExtractionIcon.htm
-    # https://4thsight.xyz/13325
-    # http://kamifuji.dyndns.org/PS-Support/Form02/index.html
     [System.Windows.Forms.Form]$form = New-Object System.Windows.Forms.Form
     $form.Text = "実行前の確認"
     $form.Size = New-Object System.Drawing.Size(460,210)
@@ -86,9 +83,7 @@ Function ConfirmYesno_winform([System.String]$prompt_message) {
     $pic.SizeMode = [System.Windows.Forms.PictureBoxSizeMode]::Zoom
     # ラベル作成
     [System.Windows.Forms.Label]$label = New-Object System.Windows.Forms.Label
-    # $label.Location = New-Object System.Drawing.Point(150,30)
     $label.Location = New-Object System.Drawing.Point(85,30)
-    # $label.Size = New-Object System.Drawing.Size(320,80)
     $label.Size = New-Object System.Drawing.Size(350,80)
     $label.Text = $prompt_message
     $font = New-Object System.Drawing.Font("ＭＳ ゴシック",12)
@@ -146,7 +141,6 @@ Function RotationBackupfile([System.String]$BackuptoHost, [System.String]$Backup
     [System.Int32]$result = 0    
 
     # 共有フォルダ接続
-    # $result = ConnectSharefolder $c_backupdrive $BackuptoHost $BackuptoId $BackuptoPass $BackuptoPath
     ## 接続先の設定
     [SecureString]$securepass = ConvertTo-SecureString $BackuptoPass -AsPlainText -Force
     [PSCredential]$cred = New-Object System.Management.Automation.PSCredential "${BackuptoHost}\${BackuptoId}", $securepass
@@ -258,7 +252,6 @@ Function CopyBackupfile([System.String]$BackuptoHost, [System.String]$BackuptoId
     [System.Int32]$result = 0    
 
     # 共有フォルダ接続
-    # $result = ConnectSharefolder $c_backupdrive $BackuptoHost $BackuptoId $BackuptoPass $BackuptoPath
     ## 接続先の設定
     [SecureString]$securepass = ConvertTo-SecureString $BackuptoPass -AsPlainText -Force
     [PSCredential]$cred = New-Object System.Management.Automation.PSCredential "${BackuptoHost}\${BackuptoId}", $securepass
