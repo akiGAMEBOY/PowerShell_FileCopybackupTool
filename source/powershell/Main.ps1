@@ -369,7 +369,7 @@ if ($result -eq 0) {
 
 # 初期設定
 if ($result -eq 0) {
-    ## 日付取得
+    ## 現在日付の取得
     [System.String]$today=Get-Date -Format yyyyMMdd
     [System.DateTime]$deldate = [System.DateTime]::MaxValue
     ## ディレクトリの取得
@@ -385,17 +385,19 @@ if ($result -eq 0) {
     [System.String]$config_fullpath = $sbtemp.ToString()
     try {
         [System.Collections.Hashtable]$param = Get-Content $config_fullpath -Raw | ConvertFrom-StringData
-        # バックアップ先 - ホスト名、またはIP
+        # バックアップ先
+        ## ホスト名、またはIP
         [System.String]$BackuptoHost=ExpandString($param.BackuptoHost)
-        # バックアップ先 - ユーザ名
+        ## ユーザ名
         [System.String]$BackuptoId=ExpandString($param.BackuptoId)
-        # バックアップ先 - パスワード
+        ## パスワード
         [System.String]$BackuptoPass=ExpandString($param.BackuptoPass)
-        # バックアップ先 - パス
+        ## バックアップ先のパス（コピー先）
         [System.String]$BackuptoPath=ExpandString($param.BackuptoPath)
-        # バックアップ先 - 世代数
+        ## 世代数
         [System.Int32]$BackuptoGene=ExpandString($param.BackuptoGene)
-        # バックアップ対象
+        # バックアップ元
+        ## バックアップ対象（コピー元）
         [System.String]$BackupfmPath=ExpandString($param.BackupfmPath)
 
         $sbtemp=New-Object System.Text.StringBuilder
@@ -418,7 +420,7 @@ if ($result -eq 0) {
     }
 }
 
-# ローテーション or コピーバックアップ
+# 実行モードの判定（ローテーション or コピーバックアップ）
 if ($result -eq 0) {
     # ローテーション
     if ($mode -eq $c_mode_rotation) {
