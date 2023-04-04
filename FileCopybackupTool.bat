@@ -12,6 +12,7 @@ ECHO *
 ECHO *---------------------------------------------------------
 ECHO.
 ECHO.
+SET RETURNCODE=0
 powershell -NoProfile -ExecutionPolicy Unrestricted -File .\source\powershell\Main.ps1 "Copy"
 SET RETURNCODE=%ERRORLEVEL%
 
