@@ -47,7 +47,7 @@ Function ExpandString($target_str) {
     [System.String]$expand_str = $target_str
     
     If ($target_str.Length -ge 2) {
-        if (($target_str.Substring(0, 1) -eq "`"") -and
+        if (($target_str.Substring(0, 1) -eq "`"") -And
                 ($target_str.Substring($target_str.Length - 1, 1) -eq "`"")) {
             # ダブルクォーテーション削除
             $expand_str = $target_str.Substring(1, $target_str.Length - 2)
@@ -176,9 +176,9 @@ Function RotationBackupfile([System.String]$BackuptoHost, [System.String]$Backup
             ## 日付フォルダ以外の場合
             ## または、フォルダ名が翌日以降の場合、
             ## または、フォルダ以外の場合
-            if ((-not($parseresult)) -or `
-                    ($item.Name -gt $today) -or `
-                    (-not($item.PSIsContainer))) {
+            if ((-Not($parseresult)) -Or `
+                    ($item.Name -gt $today) -Or `
+                    (-Not($item.PSIsContainer))) {
                 continue
             }
 
@@ -216,7 +216,7 @@ Function RotationBackupfile([System.String]$BackuptoHost, [System.String]$Backup
     }
 
     # 共有フォルダ切断
-    If (-not($result -in @(-301,-302))) {
+    If (-Not($result -in @(-301,-302))) {
         [System.Management.Automation.PSDriveInfo]$psdrive = $null
         $psdrive = Get-PSDrive $c_backupdrive 2> $null
         if ($null -ne $psdrive) {
@@ -305,7 +305,7 @@ Function CopyBackupfile([System.String]$BackuptoHost, [System.String]$BackuptoId
     }
 
     # 共有フォルダ切断
-    If (-not($result -in @(-301,-302))) {
+    If (-Not($result -in @(-301,-302))) {
         [System.Management.Automation.PSDriveInfo]$psdrive = $null
         $psdrive = Get-PSDrive $c_backupdrive 2> $null
         if ($null -ne $psdrive) {
@@ -357,7 +357,7 @@ If ($IS_VALID_DEBUG) {
 
 ## 引数の値
 if ($result -eq 0) {
-    if (-not ($mode -in @($c_mode_rotation, $c_mode_copy))) {
+    if (-Not ($mode -in @($c_mode_rotation, $c_mode_copy))) {
         $result = -102
         $sbresult=New-Object System.Text.StringBuilder
         @("エラー　　: 引数1が既定以外の値`r`n",`
