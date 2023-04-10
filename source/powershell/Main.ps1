@@ -384,7 +384,7 @@ if ($result -eq 0) {
     ForEach-Object{[void]$sbtemp.Append($_)}
     [System.String]$config_fullpath = $sbtemp.ToString()
     try {
-        [System.Collections.Hashtable]$param = Get-Content $config_fullpath -Raw | ConvertFrom-StringData
+        [System.Collections.Hashtable]$param = Get-Content $config_fullpath -Raw -Encoding UTF8 | ConvertFrom-StringData
         # バックアップ先
         ## ホスト名、またはIP
         [System.String]$BackuptoHost=ExpandString($param.BackuptoHost)
