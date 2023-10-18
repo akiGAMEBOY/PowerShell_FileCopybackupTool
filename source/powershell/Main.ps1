@@ -86,8 +86,7 @@ Function ConfirmYesno_winform([System.String]$prompt_message) {
     $label.Location = New-Object System.Drawing.Point(85,30)
     $label.Size = New-Object System.Drawing.Size(350,80)
     $label.Text = $prompt_message
-    $font = New-Object System.Drawing.Font("ＭＳ ゴシック",12)
-    $label.Font = $font
+    $label.Font = New-Object System.Drawing.Font("ＭＳ ゴシック",12)
     # OKボタンの作成
     [System.Windows.Forms.Button]$btnOkay = New-Object System.Windows.Forms.Button
     $btnOkay.Location = New-Object System.Drawing.Point(255,120)
